@@ -239,35 +239,6 @@ print("Evaluating...")
 evaluate_model(lsvcModel, trainingData, validationData, testData, 'SVM', label_column)
 
 
-
-# %% [markdown]
-# ## Kmeans
-
-# %%
-# Trains a k-means model.
-kmeans = KMeans(featuresCol='features', predictionCol=label_column).setK(2).setSeed(1)
-model = kmeans.fit(trainingData)
-
-# Make predictions
-predictions = model.transform(validationData)
-
-# Evaluate clustering by computing Silhouette score
-evaluator = ClusteringEvaluator()
-
-silhouette = evaluator.evaluate(predictions)
-print("(validationData) Silhouette with squared euclidean distance = " + str(silhouette))
-# Make predictions
-predictions = model.transform(testData)
-
-silhouette = evaluator.evaluate(predictions)
-print("(testData) Silhouette with squared euclidean distance = " + str(silhouette))
-
-# Shows the result.
-centers = model.clusterCenters()
-print("Cluster Centers: ")
-for center in centers:
-    print(center)
-
 # %% [markdown]
 #  ## Save
 
