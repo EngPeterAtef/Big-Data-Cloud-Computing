@@ -491,4 +491,4 @@ And, ran each Jupyter notebook of the project on it in fully distributed mode.
 
 | [![bemoierian](https://avatars.githubusercontent.com/u/72103362?v=4)](https://github.com/bemoierian) | [![EngPeterAtef](https://avatars.githubusercontent.com/u/75852529?v=4)](https://github.com/EngPeterAtef) | [![markyasser](https://avatars.githubusercontent.com/u/82395903?v=4)](https://github.com/markyasser) |[![karimmahmoud22](https://avatars.githubusercontent.com/u/82693464?v=4)](https://github.com/karimmahmoud22) |
 |-------------------------------------|--------------------------------------|--------------------------------------|--------------------------------------|
-|@bemoierian                          | @EngPeterAtef                         | @markyasser                           |@karimmahmoud22                       |
+|[Bemoi Erian](https://github.com/bemoierian)                         |[Peter Atef](https://github.com/EngPeterAtef)                        |[Mark Yasser](https://github.com/markyasser)                          |[Karim Mahmoud](https://github.com/karimmahmoud22)                       |
