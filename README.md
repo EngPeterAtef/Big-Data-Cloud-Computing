@@ -1,12 +1,12 @@
-# Big Data and Cloud Computing
+# Big Data :bar_chart: and Cloud Computing :cloud:
 
-## i. Brief problem description
+## i. Brief problem description :clipboard:
 
-### Business Problem
+### Business Problem :moneybag:
 
 Should a Loan be Approved or Denied?
 
-### Problem Statement
+### Problem Statement :question:
 
 Given the dataset from the U.S. Small Business Administration (SBA) comprising loan application information, the challenge is to develop a predictive model that effectively evaluates loan applications to determine whether they should be approved or denied.
 By leveraging historical data on both successful and defaulted loans, the goal is to create a robust decision-making tool that balances the promotion of small business growth with the need to minimize credit risk.
@@ -18,13 +18,13 @@ This model should aid lending institutions in making informed decisions, ultimat
 |----------------|------------|--------------|------|
 | 27             | 899164     | 179.43MB     | <https://www.kaggle.com/datasets/mirbektoktogaraev/should-this-loan-be-approved-or-denied/data> |
 
-## ii. Project pipeline
+## ii. Project pipeline :rocket:
 
 ![pipeline](./images/pipeline.png)
 
-## iii. Analysis and solution of the problem
+## iii. Analysis and solution of the problem :chart_with_upwards_trend:
 
-### Preprocessing and Cleaning 1
+### Preprocessing and Cleaning 1 :broom:
 
 #### Input Schema
 
@@ -195,7 +195,7 @@ root
 
 Final DF count: 611846
 
-### EDA
+### EDA :bar_chart:
 
 #### Features Density Distribution
 
@@ -245,7 +245,7 @@ The highest number of loans approved in September, due to factors like the end o
 Most loans are lended to the “Retail Trade” sector (NAICS code
 44).
 
-### Association Rules
+### Association Rules :link:
 
 #### Prepare dataframe
 
@@ -364,14 +364,14 @@ only showing top 20 rows
 
 ## Preprocessing and Cleaning 2
 
-### Drop
+### Drop :wastebasket:
 
 1. ‘ApprovalMonth’ The data in this column is filled in after a loan has defaulted, making it unnecessary for our model's predictive task of identifying loans at risk of default.
 2. ‘ChgOffPrinGr’ this column leaks information to the model, since logically if there is an amount to be charged off then the loan itself is charged off, this is also observable in the association rule MIS_Status_1 -> clean_ChgOffPrinGr_0.0, also this column is filled in after a loan has defaulted.
 3. ‘Retainedjob’, and ‘clean_SBA_Appv’ due to high correlation.
 4. ‘Name’, ‘City’, and ‘Zip’ as they contain too many unique values and will affect the model’s generalization.
 
-### Final Schema
+### Final Schema :page_facing_up:
 
 root
  |-- State: string (nullable = true)
@@ -390,9 +390,9 @@ root
  |-- MIS_Status: integer (nullable = true)
  |-- clean_GrAppv: double (nullable = true)
 
-## Machine Learning
+## Machine Learning :robot:
 
-### Data Preparation
+### Data Preparation :gear:
 
 #### Split
 
@@ -414,7 +414,7 @@ Once the best model is selected, it is trained on the entire training dataset (c
 
 The final step involves evaluating the selected model's performance on the test set, which is data the model has never seen before. This step provides a more accurate estimation of how the model will perform on unseen data in real-world scenarios.
 
-### KNN Implementation
+### KNN Implementation :triangular_ruler:
 
 We also implemented the KNN classifier using MapReduce.
 Similarity between neighbors is calculated using cosine similarity, which handles sparse vectors (due to one hot encoding of categorical features) better than euclidean distance.
@@ -435,7 +435,7 @@ Similarity between neighbors is calculated using cosine similarity, which handle
 1. There is no training error since there is no training at all for the KNN classifier, it just stores the training data.
 2. Results and evaluation were tested using only 50,000 rows for the full dataset, and 500 rows from the validation set after splitting. Evaluating each point requires calculating the distance between the validation point and each training point, which consumes a lot of time even when running in fully distributed mode on Azure. Additionally, due to our limited credit on Azure, we could not scale up the cluster further.
 
-## iv. Results and Evaluation
+## iv. Results and Evaluation :chart_with_upwards_trend:
 
 | Metric    | Logistic Regression (maxIter=10) |  | Random Forest |  | GBT (maxIter=100) |  | SVM (maxIter=100) |  | KNN (k=3) |  |
 |-----------|:--------------------------------:|:-:|:-------------:|:-:|:-----------------:|:-:|:----------------:|:-:|:---------:|:-:|
@@ -454,17 +454,17 @@ As observed, the best performing model is GBT, so we will train on training+vali
 | Recall    | 0.9357      | 0.9345     |
 | F1 Score  | 0.9340      | 0.9328     |
 
-## v. Unsuccessful trials that were not included in the final solution
+## v. Unsuccessful trials that were not included in the final solution :x:
 
 1. Tried to perform all Exploratory Data Analysis (EDA) using PySpark DataFrame (DF) and Plotly (2_EDA.ipynb), but the results were not as good as matplotlib, which doesn’t work by default with PySpark DF. So, we used pandas for EDA instead (3_EDA.ipynb).
 2. Tried including some previously dropped columns in the training to assess their impact on accuracy and ensure the correctness of our analysis. However, it turns out they don't provide any benefits, and sometimes they significantly worsen accuracy.
 
-## vi. Any Enhancements and future work
+## vi. Any Enhancements and future work :bulb:
 
 Make hyperparameter tuning for each model instead of using the default parameters.
 Instead of dropping columns that contain a lot of unique values, try to group some of these values using clustering techniques, or find the most important values and mark the others as ‘Other’.
 
-## vii. Working in fully distributed mode
+## vii. Working in fully distributed mode :cloud:
 
 Deployed a Spark cluster on Azure using HDInsight, with the following specifications:
 
@@ -477,7 +477,7 @@ Deployed a Spark cluster on Azure using HDInsight, with the following specificat
 
 And, ran each Jupyter notebook of the project on it in fully distributed mode.
 
-### Screenshots
+### Screenshots :camera_flash:
 
 #### Hosts
 
@@ -487,8 +487,8 @@ And, ran each Jupyter notebook of the project on it in fully distributed mode.
 
 ![hosts](./images/worker0metrics.png)
 
-## Collaborators
+## Collaborators :handshake:
 
 | [![bemoierian](https://avatars.githubusercontent.com/u/72103362?v=4)](https://github.com/bemoierian) | [![EngPeterAtef](https://avatars.githubusercontent.com/u/75852529?v=4)](https://github.com/EngPeterAtef) | [![markyasser](https://avatars.githubusercontent.com/u/82395903?v=4)](https://github.com/markyasser) |[![karimmahmoud22](https://avatars.githubusercontent.com/u/82693464?v=4)](https://github.com/karimmahmoud22) |
 |-------------------------------------|--------------------------------------|--------------------------------------|--------------------------------------|
-|[Bemoi Erian](https://github.com/bemoierian)                         |[Peter Atef](https://github.com/EngPeterAtef)                        |[Mark Yasser](https://github.com/markyasser)                          |[Karim Mahmoud](https://github.com/karimmahmoud22)                       |
+|[Bemoi Erian](https://github.com/bemoierian)                         |[Peter Atef](https://github.com/EngPeterAtef)                       |[Mark Yasser](https://github.com/markyasser)                         |[Karim Mahmoud](https://github.com/karimmahmoud22)                     |
