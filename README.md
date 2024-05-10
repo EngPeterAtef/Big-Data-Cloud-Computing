@@ -362,7 +362,7 @@ only showing top 20 rows
 ![support_confidence](./images/association_rules/support_confidence.png) ![support_lift](./images/association_rules/support_lift.png)
 ![confidence_lift](./images/association_rules/confidence_lift.png) ![support_confidence_shade_lift](./images/association_rules/support_confidence_shade_lift.png)
 
-## Preprocessing and Cleaning 2
+## Preprocessing and Cleaning 2 :broom:
 
 ### Drop :wastebasket:
 
