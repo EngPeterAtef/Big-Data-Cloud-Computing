@@ -2,11 +2,11 @@
 
 ## i. Brief problem description
 
-### BusinessProblem
+### Business Problem
 
 Should a Loan be Approved or Denied?
 
-### ProblemStatement
+### Problem Statement
 
 Given the dataset from the U.S. Small Business Administration (SBA) comprising loan application information, the challenge is to develop a predictive model that effectively evaluates loan applications to determine whether they should be approved or denied.
 By leveraging historical data on both successful and defaulted loans, the goal is to create a robust decision-making tool that balances the promotion of small business growth with the need to minimize credit risk.
@@ -28,34 +28,34 @@ This model should aid lending institutions in making informed decisions, ultimat
 
 #### Input Schema
 
-root
-|-- LoanNr_ChkDgt: long (nullable = true)
-|-- Name: string (nullable = true)
-|-- City: string (nullable = true)
-|-- State: string (nullable = true)
-|-- Zip: integer (nullable = true)
-|-- Bank: string (nullable = true)
-|-- BankState: string (nullable = true)
-|-- NAICS: integer (nullable = true)
-|-- ApprovalDate: string (nullable = true)
-|-- ApprovalFY: string (nullable = true)
-|-- Term: integer (nullable = true)
-|-- NoEmp: integer (nullable = true)
-|-- NewExist: integer (nullable = true)
-|-- CreateJob: integer (nullable = true)
-|-- RetainedJob: integer (nullable = true)
-|-- FranchiseCode: integer (nullable = true)
-|-- UrbanRural: integer (nullable = true)
-|-- RevLineCr: string (nullable = true)
-|-- LowDoc: string (nullable = true)
-|-- ChgOffDate: string (nullable = true)
-|-- DisbursementDate: string (nullable = true)
-|-- DisbursementGross: string (nullable = true)
-|-- BalanceGross: string (nullable = true)
-|-- MIS_Status: string (nullable = true)
-|-- ChgOffPrinGr: string (nullable = true)
-|-- GrAppv: string (nullable = true)
-|-- SBA_Appv: string (nullable = true)
+root  
+|-- LoanNr_ChkDgt: long (nullable = true)  
+|-- Name: string (nullable = true)  
+|-- City: string (nullable = true)  
+|-- State: string (nullable = true)  
+|-- Zip: integer (nullable = true)  
+|-- Bank: string (nullable = true)  
+|-- BankState: string (nullable = true)  
+|-- NAICS: integer (nullable = true)  
+|-- ApprovalDate: string (nullable = true)  
+|-- ApprovalFY: string (nullable = true)  
+|-- Term: integer (nullable = true)  
+|-- NoEmp: integer (nullable = true)  
+|-- NewExist: integer (nullable = true)  
+|-- CreateJob: integer (nullable = true)  
+|-- RetainedJob: integer (nullable = true)  
+|-- FranchiseCode: integer (nullable = true)  
+|-- UrbanRural: integer (nullable = true)  
+|-- RevLineCr: string (nullable = true)  
+|-- LowDoc: string (nullable = true)  
+|-- ChgOffDate: string (nullable = true)  
+|-- DisbursementDate: string (nullable = true)  
+|-- DisbursementGross: string (nullable = true)  
+|-- BalanceGross: string (nullable = true)  
+|-- MIS_Status: string (nullable = true)  
+|-- ChgOffPrinGr: string (nullable = true)  
+|-- GrAppv: string (nullable = true)  
+|-- SBA_Appv: string (nullable = true)  
 
 #### Steps
 
