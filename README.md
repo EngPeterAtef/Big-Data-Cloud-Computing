@@ -59,113 +59,139 @@ root
 
 #### Steps
 
-A. Started by making a general report displaying the Type,
-UniqueSample, N. of Unique, and %None for each column.
+A. Started by making a general report displaying the Type, UniqueSample, N. of Unique, and %None for each column.
 
-![report1](./images/report1.png)
-![report1](./images/report2.png)
+| Column            | Type   | Unique Sample                                                       |   N Unique |        %None |
+|-------------------|--------|---------------------------------------------------------------------|------------|--------------|
+| LoanNr_ChkDgt     | bigint | [1000895005, 1001055002]                                            |     899164 |  0           |
+| Name              | string | ['TURTLE BEACH INN', 'URBAN BEAST-SEATTLE LLC']                     |     779587 |  0.000333643 |
+| City              | string | ['Worcester', 'West Sand Lake']                                     |      32582 |  0.00333643  |
+| State             | string | ['SC', 'AZ']                                                        |         52 |  0.001557    |
+| Zip               | int    | [47711, 92644]                                                      |      33611 |  0           |
+| Bank              | string | ['MANUFACTURERS & TRADERS TR CO', 'IOWA ST. BK & TR CO OF FAIRFIE'] |       5803 |  0.173383    |
+| BankState         | string | ['SC', 'AZ']                                                        |         57 |  0.174162    |
+| NAICS             | int    | [445291, 561910]                                                    |       1312 |  0           |
+| ApprovalDate      | string | ['13-May-98', '5-Sep-03']                                           |       9859 |  0           |
+| ApprovalFY        | string | ['1987', '2012']                                                    |         52 |  0           |
+| Term              | int    | [148, 243]                                                          |        412 |  0           |
+| NoEmp             | int    | [148, 463]                                                          |        599 |  0           |
+| NewExist          | int    | [1, 2]                                                              |          4 |  0.0151252   |
+| CreateJob         | int    | [148, 31]                                                           |        246 |  0           |
+| RetainedJob       | int    | [148, 540]                                                          |        358 |  0           |
+| FranchiseCode     | int    | [85100, 74820]                                                      |       2768 |  0           |
+| UrbanRural        | int    | [1, 2]                                                              |          3 |  0           |
+| RevLineCr         | string | ['7', '3']                                                          |         19 |  0.503579    |
+| LowDoc            | string | ['0', 'Y']                                                          |          9 |  0.287156    |
+| ChgOffDate        | string | ['12-Jun-13', '30-Aug-07']                                          |       6449 | 81.9055      |
+| DisbursementDate  | string | ['13-May-98', '18-Sep-81']                                          |       8473 |  0.263356    |
+| DisbursementGross | string | ['$50,000.00 ', '$43,829.00 ']                                      |     118859 |  0           |
+| BalanceGross      | string | ['$25,000.00 ', '$96,908.00 ']                                      |         15 |  0           |
+| MIS_Status        | string | ['P I F', 'CHGOFF']                                                 |          3 |  0.222095    |
+| ChgOffPrinGr      | string | ['$50,000.00 ', '$210,880.00 ']                                     |      83165 |  0           |
+| GrAppv            | string | ['$50,000.00 ', '$11,200.00 ']                                      |      22128 |  0           |
+| SBA_Appv          | string | ['$50,000.00 ', '$53,550.00 ']                                      |      38326 |  0           |
 
-B. Show unique values and their percentage for each column.
-C. Preprocess each column independently:
+B. Show unique values and their percentage for each column.  
+C. Preprocess each column independently:  
 
-1. LoanNr_ChkDgt drop
+1. LoanNr_ChkDgt drop  
     i. Dropped since it is an ID column.
-2. Name - Name of Borrower
-    i. Had 3 null rows, which were filled by ‘Unknown Name’.
-    ii. This column has 86.70% unique values, which is not suitable for machine learning (lack of generalization).
-3. City - City of Borrower
-    i. Had 30 null rows, which were filled by ‘Unknown City’.
-4. State - State of Borrower
-    i. Had 14 null rows, some of these rows had a valid Zip code, so we can deduce these null values by checking the corresponding Zip code if it is repeated with a valid state.
-    ii. After deducing, there is 1 null row remaining, which had a valid Zip code but that code was not repeated again in the dataset, so we googled this state and filled it manually.
-5. Zip - Zip code of Borrower
+2. Name - Name of Borrower  
+    i. Had 3 null rows, which were filled by ‘Unknown Name’.  
+    ii. This column has 86.70% unique values, which is not suitable for machine learning (lack of generalization).  
+3. City - City of Borrower  
+    i. Had 30 null rows, which were filled by ‘Unknown City’.  
+4. State - State of Borrower  
+    i. Had 14 null rows, some of these rows had a valid Zip code, so we can deduce these null values by checking the corresponding Zip code if it is repeated with a valid state.  
+    ii. After deducing, there is 1 null row remaining, which had a valid Zip code but that code was not repeated again in the dataset, so we googled this state and filled it manually.  
+5. Zip - Zip code of Borrower  
     i. Least zip code in the US starts with 502, so any value less than this is invalid, so drop these rows.
-6. Bank - Name of the bank that gave the loan
+6. Bank - Name of the bank that gave the loan  
     i. Had 1558 null rows, which we filled by ‘Unknown Bank’
-7. BankState - State of Bank
+7. BankState - State of Bank  
     i. Had 1565 null rows, drop these rows as we can’t populate them.
-8. NAICS - North American Industry Classification System code for the industry where the business is located
-    i. This row contains codes like [445291, 561910], we were given a transformation dictionary on kaggle that transforms each code to its corresponding sector by using the first 2 digits of the code.
+8. NAICS - North American Industry Classification System code for the industry where the business is located  
+    i. This row contains codes like [445291, 561910], we were given a transformation dictionary on kaggle that transforms each code to its corresponding sector by using the first 2 digits of the code.  
     Ex: naics_to_sector = {
     22: 'Utilities',
     23: 'Construction', …, etc.
-    }
+    }  
     ii. Rename the transformed column to ‘Sector’.
-9. ApprovalDate - Date SBA commitment issued
-    i. The full date has too much detail, so we will extract the month only for analysis.
+9. ApprovalDate - Date SBA commitment issued  
+    i. The full date has too much detail, so we will extract the month only for analysis.  
     ii. Rename the new column ‘ApprovalMonth’.
-10. ApprovalFY - Fiscal Year of commitment drop
+10. ApprovalFY - Fiscal Year of commitment drop  
     i. Drop as it is a date in the past, so we can’t use them to identify loans at risk of default in the future.
-11. Term - Loan term in months
+11. Term - Loan term in months  
     i. Clean, have no nulls.
-12. NoEmp - Number of Business Employees
+12. NoEmp - Number of Business Employees  
     i. Clean, have no nulls.
-13. NewExist - 1 = Existing business, 2 = New business
-    i.  Drop rows with 0 or Null.
+13. NewExist - 1 = Existing business, 2 = New business  
+    i.  Drop rows with 0 or Null.  
     ii. Convert it to boolean, '2' is true, '1' is false.
-14. CreateJob - Number of jobs created
+14. CreateJob - Number of jobs created  
     i. Clean, have no nulls.
-15. RetainedJob - Number of jobs retained
+15. RetainedJob - Number of jobs retained  
     i. Clean, have no nulls.
-16. FranchiseCode - Franchise code, (0 or 1) = No franchise
-    i.  We don't care about the franchise code, we only care if there is a franchise or not, make 0 or 1 = 0, anything else = 1.
+16. FranchiseCode - Franchise code, (0 or 1) = No franchise  
+    i.  We don't care about the franchise code, we only care if there is a franchise or not, make 0 or 1 = 0, anything else = 1.  
     ii. Rename the column to ‘IsFranchise’
-17. UrbanRural - 1 = Urban, 2 = rural, 0 = undefined
+17. UrbanRural - 1 = Urban, 2 = rural, 0 = undefined  
     i. Clean, have no nulls.
-18. RevLineCr - Revolving line of credit: Y = Yes, N = No
-    i. Filter only Y and N.
+18. RevLineCr - Revolving line of credit: Y = Yes, N = No  
+    i. Filter only Y and N.  
     ii. Convert to boolean, Y=1, N=0.
-19. LowDoc - LowDoc Loan Program: Y = Yes, N = No
-    i. Filter only Y and N.
+19. LowDoc - LowDoc Loan Program: Y = Yes, N = No  
+    i. Filter only Y and N.  
     ii. Convert to boolean, Y=1, N=0.
-20. ChgOffDate - The date when a loan is declared to be in default drop
+20. ChgOffDate - The date when a loan is declared to be in default drop  
     i. Drop the column due to the high number of missing values.
-21. DisbursementDate - Date when loan was disbursed drop
+21. DisbursementDate - Date when loan was disbursed drop  
     i. Drop as the data in this column is filled in after a loan has defaulted, making them unnecessary for our model's predictive task of identifying loans at risk of default.
-22. DisbursementGross - Amount disbursed
-    i. Remove ‘$’, ‘,’, convert to float, ex:  $50,000.00 -> 50000.0.
+22. DisbursementGross - Amount disbursed  
+    i. Remove ‘$’, ‘,’, convert to float, ex:  $50,000.00 -> 50000.0.  
     ii. Rename to ‘clean_DisbursementGross’.
-23. BalanceGross - Gross amount outstanding drop
+23. BalanceGross - Gross amount outstanding drop  
     i.  Drop as most of the values are 0
-24. MIS_Status - Target variable
-    i. Drop null rows.
-    ii. Filter only "P I F" and "CHGOFF".
+24. MIS_Status - Target variable  
+    i. Drop null rows.  
+    ii. Filter only "P I F" and "CHGOFF".  
     iii. Make the column boolean "P I F" = 1, "CHGOFF" = 0.
-25. ChgOffPrinGr - Charged-off amount
-    i. Remove ‘$’, ‘,’, convert to float, ex:  $50,000.00 -> 50000.0.
+25. ChgOffPrinGr - Charged-off amount  
+    i. Remove ‘$’, ‘,’, convert to float, ex:  $50,000.00 -> 50000.0.  
     ii. Rename to ‘clean_ChgOffPrinGr’.
-26. GrAppv - Gross amount of loan approved by bank
-    i. Remove ‘$’, ‘,’, convert to float, ex:  $50,000.00 -> 50000.0.
+26. GrAppv - Gross amount of loan approved by bank  
+    i. Remove ‘$’, ‘,’, convert to float, ex:  $50,000.00 -> 50000.0.  
     ii. Rename to ‘clean_GrAppv’.
-27. SBA_Appv - SBA's guaranteed amount of approved loan
-    i. Remove ‘$’, ‘,’, convert to float, ex:  $50,000.00 -> 50000.0.
+27. SBA_Appv - SBA's guaranteed amount of approved loan  
+    i. Remove ‘$’, ‘,’, convert to float, ex:  $50,000.00 -> 50000.0.  
     ii. Rename to ‘clean_SBA_Appv’.
 
 #### Output Schema
 
-root
- |-- Name: string (nullable = false)
- |-- City: string (nullable = false)
- |-- State: string (nullable = false)
- |-- Zip: string (nullable = true)
- |-- Bank: string (nullable = false)
- |-- BankState: string (nullable = true)
- |-- Term: integer (nullable = true)
- |-- NoEmp: integer (nullable = true)
- |-- NewExist: integer (nullable = false)
- |-- CreateJob: integer (nullable = true)
- |-- RetainedJob: integer (nullable = true)
- |-- UrbanRural: integer (nullable = true)
- |-- RevLineCr: integer (nullable = false)
- |-- LowDoc: integer (nullable = false)
- |-- Sector: string (nullable = true)
- |-- ApprovalMonth: string (nullable = true)
- |-- IsFranchise: integer (nullable = false)
- |-- clean_DisbursementGross: float (nullable = true)
- |-- MIS_Status: integer (nullable = false)
- |-- clean_ChgOffPrinGr: float (nullable = true)
- |-- clean_GrAppv: float (nullable = true)
- |-- clean_SBA_Appv: float (nullable = true)
+root  
+ |-- Name: string (nullable = false)  
+ |-- City: string (nullable = false)  
+ |-- State: string (nullable = false)  
+ |-- Zip: string (nullable = true)  
+ |-- Bank: string (nullable = false)  
+ |-- BankState: string (nullable = true)  
+ |-- Term: integer (nullable = true)  
+ |-- NoEmp: integer (nullable = true)  
+ |-- NewExist: integer (nullable = false)  
+ |-- CreateJob: integer (nullable = true)  
+ |-- RetainedJob: integer (nullable = true)  
+ |-- UrbanRural: integer (nullable = true)  
+ |-- RevLineCr: integer (nullable = false)  
+ |-- LowDoc: integer (nullable = false)  
+ |-- Sector: string (nullable = true)  
+ |-- ApprovalMonth: string (nullable = true)  
+ |-- IsFranchise: integer (nullable = false)  
+ |-- clean_DisbursementGross: float (nullable = true)  
+ |-- MIS_Status: integer (nullable = false)  
+ |-- clean_ChgOffPrinGr: float (nullable = true)  
+ |-- clean_GrAppv: float (nullable = true)  
+ |-- clean_SBA_Appv: float (nullable = true)  
 
 Final DF count: 611846
 
@@ -201,7 +227,7 @@ Their density distributions are also very similar
 
 #### Box Plot Examples
 
-![Term Box Plot](./images/EDA/term_boxplot.png)
+![Term Box Plot](./images/EDA/Term_boxplot.png)
 ![Term Box Plot](./images/EDA/clean_GrAppv_boxplot.png)
 
 #### General Insights
@@ -226,10 +252,10 @@ Most loans are lended to the “Retail Trade” sector (NAICS code
 1. Append column name at the beginning of each item in the column
 to help differentiate values after creating the itemsets.
 2. Concatenate columns to create itemsets
-Example:
+Example:  
 [JC, NORTHAMPTON, MA, 1060, FLORENCE, MA, 60, 2, 0, 0, 2, 1, 1, 0, 23, Apr, 0, 135070.0, 1, 0.0,
-35000.0, 17500.0]
-becomes
+35000.0, 17500.0]  
+becomes  
 [Name_JC, City_NORTHAMPTON, State_MA, Zip_1060, Bank_FLORENCE, BankState_MA, Term_60,
 NoEmp_2, NewExist_0, CreateJob_0, RetainedJob_2, UrbanRural_1, RevLineCr_1, LowDoc_0, Sector_23,
 ApprovalMonth_Apr, IsFranchise_0, clean_DisbursementGross_135070.0, MIS_Status_1,
