@@ -373,22 +373,22 @@ only showing top 20 rows
 
 ### Final Schema :page_facing_up:
 
-root
- |-- State: string (nullable = true)
- |-- Bank: string (nullable = true)
- |-- BankState: string (nullable = true)
- |-- Term: integer (nullable = true)
- |-- NoEmp: integer (nullable = true)
- |-- NewExist: integer (nullable = true)
- |-- CreateJob: integer (nullable = true)
- |-- UrbanRural: integer (nullable = true)
- |-- RevLineCr: integer (nullable = true)
- |-- LowDoc: integer (nullable = true)
- |-- Sector: integer (nullable = true)
- |-- IsFranchise: integer (nullable = true)
- |-- clean_DisbursementGross: double (nullable = true)
- |-- MIS_Status: integer (nullable = true)
- |-- clean_GrAppv: double (nullable = true)
+root  
+ |-- State: string (nullable = true)  
+ |-- Bank: string (nullable = true)  
+ |-- BankState: string (nullable = true)  
+ |-- Term: integer (nullable = true)  
+ |-- NoEmp: integer (nullable = true)  
+ |-- NewExist: integer (nullable = true)  
+ |-- CreateJob: integer (nullable = true)  
+ |-- UrbanRural: integer (nullable = true)  
+ |-- RevLineCr: integer (nullable = true)  
+ |-- LowDoc: integer (nullable = true)  
+ |-- Sector: integer (nullable = true)  
+ |-- IsFranchise: integer (nullable = true)  
+ |-- clean_DisbursementGross: double (nullable = true)  
+ |-- MIS_Status: integer (nullable = true)  
+ |-- clean_GrAppv: double (nullable = true)  
 
 ## Machine Learning :robot:
 
