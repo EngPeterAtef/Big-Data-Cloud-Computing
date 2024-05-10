@@ -218,11 +218,11 @@ loans are paid in full (MIS_Status = 1).
 
 ![Correlation Matrix](./images/EDA/correlation_matrix.png)
 
-Very high correlation between:
-a. Createjob - Retainedjob (100%)
-b. clean_DisbursementGross - clean_GrAppv (96%)
-c. clean_DisbursementGross - clean_SBA_Appv (93%)
-d. clean_GrAppv - clean_SBA_Appv (98%)
+Very high correlation between:  
+a. Createjob - Retainedjob (100%)  
+b. clean_DisbursementGross - clean_GrAppv (96%)  
+c. clean_DisbursementGross - clean_SBA_Appv (93%)  
+d. clean_GrAppv - clean_SBA_Appv (98%)  
 Their density distributions are also very similar
 
 #### Box Plot Examples
