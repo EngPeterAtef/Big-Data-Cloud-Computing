@@ -263,9 +263,86 @@ clean_ChgOffPrinGr_0.0, clean_GrAppv_35000.0, clean_SBA_Appv_17500.0]
 
 #### Sorting Association Rules
 
-![sort_support](./images/association_rules/sort_support.png)
-![sort_confidence](./images/association_rules/sort_confidence.png)
-![sort_lift](./images/association_rules/sort_lift.png)
+##### Association Rules sorted by Support
+
+| antecedent                             | consequent               | confidence         | lift               | support            |
+|----------------------------------------|-------------------------|------------------- |------------------- |------------------- |
+| [LowDoc_0]                             | [IsFranchise_0]         | 0.9591190774033764 | 1.001228723868855  | 0.8696665500795951 |
+| [IsFranchise_0]                        | [LowDoc_0]              | 0.9078488277857683 | 1.001228723868855  | 0.8696665500795951 |
+| [MIS_Status_1]                         | [clean_ChgOffPrinGr_0.0]| 0.9936362928861776 | 1.21933110291366   | 0.8138224324421505 |
+| [clean_ChgOffPrinGr_0.0]               | [MIS_Status_1]          | 0.9986742747119406 | 1.2193311029136598 | 0.8138224324421505 |
+| [MIS_Status_1]                         | [IsFranchise_0]         | 0.9546658205670066 | 0.9965799490041011 | 0.7819042700287328 |
+| [IsFranchise_0]                        | [MIS_Status_1]          | 0.8162333884421604 | 0.996579949004101  | 0.7819042700287328 |
+| [IsFranchise_0]                        | [clean_ChgOffPrinGr_0.0]| 0.8119543500997248 | 0.996381875652817  | 0.7778051993475482 |
+| [clean_ChgOffPrinGr_0.0]               | [IsFranchise_0]         | 0.9544760777785577 | 0.9963818756528168 | 0.7778051993475482 |
+| [MIS_Status_1, IsFranchise_0]          | [clean_ChgOffPrinGr_0.0]| 0.9934699679142149 | 1.2191269988436322 | 0.7767984100574328 |
+| [clean_ChgOffPrinGr_0.0, MIS_Status_1] | [IsFranchise_0]         | 0.9545060188699708 | 0.9964131312929693 | 0.7767984100574328 |
+| [clean_ChgOffPrinGr_0.0, IsFranchise_0]|[MIS_Status_1]          | 0.9987056022626745 | 1.2193693522787985 | 0.7767984100574328 |
+| [LowDoc_0]                             | [MIS_Status_1]          | 0.8052207894271984 | 0.9831341190244184 | 0.730121631913913  |
+| [MIS_Status_1]                         | [LowDoc_0]              | 0.8914418216685325 | 0.9831341190244185 | 0.730121631913913  |
+| [LowDoc_0]                             | [clean_ChgOffPrinGr_0.0]| 0.8008424930873749 | 0.982746068503571  | 0.7261516786903894 |
+| [clean_ChgOffPrinGr_0.0]               | [LowDoc_0]              | 0.8910899627954553 | 0.982746068503571  | 0.7261516786903894 |
+| [MIS_Status_1, LowDoc_0]               | [clean_ChgOffPrinGr_0.0]| 0.9931277170141609 | 1.218707008983737  | 0.7251040294453179 |
+| [clean_ChgOffPrinGr_0.0, MIS_Status_1] | [LowDoc_0]              | 0.8909855523021123 | 0.9826309185118447 | 0.7251040294453179 |
+| [clean_ChgOffPrinGr_0.0, LowDoc_0]     | [MIS_Status_1]          | 0.998557258385795  | 1.219188231859873  | 0.7251040294453179 |
+| [IsFranchise_0]                        | [NewExist_0]            | 0.7407104090849376 | 1.0155348377140703 | 0.7095576337836645 |
+| [NewExist_0]                           | [IsFranchise_0]         | 0.9728235051583354 | 1.0155348377140703 | 0.7095576337836645 |
+
+only showing top 20 rows
+
+##### Association Rules sorted by Confidence
+
+| antecedent                                                                  | consequent    | confidence        | lift              | support            |
+|----------------------------------------------------------------------------|--------------|------------------|------------------|-------------------|
+| [UrbanRural_1, NewExist_0, clean_ChgOffPrinGr_0.0]                          | [MIS_Status_1]| 0.9999935583612471| 1.2209418819513285| 0.2537223418964903|
+| [UrbanRural_1, NewExist_0, clean_ChgOffPrinGr_0.0, LowDoc_0]                | [MIS_Status_1]| 0.9999935403855098| 1.2209418600038566| 0.25301628187485087|
+| [UrbanRural_1, NewExist_0, clean_ChgOffPrinGr_0.0, IsFranchise_0]           | [MIS_Status_1]| 0.9999934090849173| 1.2209416996924314| 0.24797579783148047|
+| [UrbanRural_1, NewExist_0, clean_ChgOffPrinGr_0.0, LowDoc_0, IsFranchise_0] | [MIS_Status_1]| 0.9999933914008908| 1.2209416781011238| 0.24731223216299528|
+| [RevLineCr_1, clean_ChgOffPrinGr_0.0]                                       | [MIS_Status_1]| 0.9999932206147547| 1.220941469579834 | 0.24108190623130657|
+| [RevLineCr_1, clean_ChgOffPrinGr_0.0, LowDoc_0]                             | [MIS_Status_1]| 0.9999932182239885| 1.2209414666608287| 0.24099691752499813|
+| [RevLineCr_1, clean_ChgOffPrinGr_0.0, IsFranchise_0]                        | [MIS_Status_1]| 0.9999931191555828| 1.2209413457032838| 0.23752709015013582|
+| [RevLineCr_1, clean_ChgOffPrinGr_0.0, LowDoc_0, IsFranchise_0]              | [MIS_Status_1]| 0.9999931169295999| 1.2209413429854705| 0.23745027343481856|
+| [UrbanRural_1, clean_ChgOffPrinGr_0.0]                                      | [MIS_Status_1]| 0.9999904955614272| 1.2209381424266637| 0.3439198752627295|
+| [UrbanRural_1, clean_ChgOffPrinGr_0.0, LowDoc_0]                            | [MIS_Status_1]| 0.999990459926923 | 1.2209380989187248| 0.34263523827891335|
+| [UrbanRural_1, clean_ChgOffPrinGr_0.0, IsFranchise_0]                       | [MIS_Status_1]| 0.9999901657561796| 1.2209377397510301| 0.3323859271777539|
+| [UrbanRural_1, clean_ChgOffPrinGr_0.0, LowDoc_0, IsFranchise_0]             | [MIS_Status_1]| 0.9999901310108312| 1.2209376973287058| 0.3312156980678144|
+| [UrbanRural_1, CreateJob_0, clean_ChgOffPrinGr_0.0]                         | [MIS_Status_1]| 0.99998497855689  | 1.2209314064413703| 0.21760541051179544|
+| [UrbanRural_1, CreateJob_0, clean_ChgOffPrinGr_0.0, LowDoc_0]               | [MIS_Status_1]| 0.9999848893522821| 1.220931297527027 | 0.21632077352797927|
+| [UrbanRural_1, CreateJob_0, clean_ChgOffPrinGr_0.0, IsFranchise_0]          | [MIS_Status_1]| 0.999984493840178 | 1.2209308146266236| 0.21080304521072296|
+| [UrbanRural_1, CreateJob_0, clean_ChgOffPrinGr_0.0, LowDoc_0, IsFranchise_0]|[MIS_Status_1]| 0.9999844072817994| 1.220930708943193 | 0.20963281610078352|
+| [RevLineCr_1, UrbanRural_1, NewExist_0, IsFranchise_0]                      | [LowDoc_0]    | 0.99989898126491  | 1.102747010701519 | 0.21030782255665642|
+| [RevLineCr_1, UrbanRural_1, NewExist_0]                                     | [LowDoc_0]    | 0.9998847155933689| 1.102731277685542 | 0.2126319367945529 |
+| [RevLineCr_1, NewExist_0, IsFranchise_0]                                    | [LowDoc_0]    | 0.9998585554655454| 1.1027024267683019| 0.2541750701974026 |
+| [RevLineCr_1, NewExist_0]                                                   | [LowDoc_0]    | 0.9998473894050094| 1.1026901121844208| 0.25699113829296916|
+
+only showing top 20 rows
+
+##### Association Rules sorted by Lift
+
+| antecedent                                                   | consequent    | confidence        | lift              | support            |
+|-------------------------------------------------------------|--------------|------------------|------------------|-------------------|
+|[Sector_0, RetainedJob_0, RevLineCr_0, CreateJob_0]          |[UrbanRural_0]|0.9622070991585083|2.3299320272906097|0.20127613811318534|
+|[Sector_0, RetainedJob_0, CreateJob_0]                       |[UrbanRural_0]|0.9621435707367666|2.329778196681182 |0.20620057988448073|
+|[Sector_0, RevLineCr_0, CreateJob_0]                         |[UrbanRural_0]|0.9613143211407316|2.327770213998338 |0.20274382769520435|
+|[Sector_0, RetainedJob_0, RevLineCr_0]                       |[UrbanRural_0]|0.9583290294972627|2.3205414930535393|0.2122919819693191 |
+|[Sector_0, RetainedJob_0, IsFranchise_0]                     |[UrbanRural_0]|0.9578599704855825|2.319405692231701 |0.20050143336721984|
+|[Sector_0, RetainedJob_0]                                    |[UrbanRural_0]|0.9575674196150743|2.318697296249791 |0.21727853087214757|
+|[Sector_0, RevLineCr_0, clean_ChgOffPrinGr_0.0]              |[UrbanRural_0]|0.957375768385984 |2.318233223248129 |0.2122936163675173 |
+|[Sector_0, RevLineCr_0, MIS_Status_1]                        |[UrbanRural_0]|0.9572674804788404|2.317971009985264 |0.21198798390444654|
+|[Sector_0, RevLineCr_0, clean_ChgOffPrinGr_0.0, MIS_Status_1]|[UrbanRural_0]|0.957201639999408 |2.317811580854201 |0.21139142856208915|
+|[Sector_0, RevLineCr_0, IsFranchise_0]                       |[UrbanRural_0]|0.9564587211312786|2.3160126433218893|0.21247013137292717|
+|[Sector_0, RevLineCr_0]                                      |[UrbanRural_0]|0.956220587935706 |2.31543601677277  |0.23014614788688656|
+|[Sector_0, CreateJob_0]                                      |[UrbanRural_0]|0.953855949661036 |2.309710174120051 |0.20811609457281735|
+|[UrbanRural_0, RetainedJob_0, RevLineCr_0]                   |[Sector_0]    |0.5754500064239164|2.294965907496872 |0.2122919819693191 |
+|[UrbanRural_0, RevLineCr_0]                                  |[Sector_0]    |0.5749528405889415|2.2929831485622945|0.23014614788688656|
+|[UrbanRural_0, RetainedJob_0, RevLineCr_0, CreateJob_0]      |[Sector_0]    |0.5744365251138145|2.290924018490695 |0.20127613811318534|
+|[UrbanRural_0, RevLineCr_0, CreateJob_0]                     |[Sector_0]    |0.5744159662892733|2.2908420273517716|0.20274382769520435|
+|[UrbanRural_0, RetainedJob_0]                                |[Sector_0]    |0.572417059570712 |2.282870139750496 |0.21727853087214757|
+|[Sector_0, clean_ChgOffPrinGr_0.0]                           |[UrbanRural_0]|0.9422562520344764|2.281622138778549 |0.21762665768837255|
+|[Sector_0, MIS_Status_1]                                     |[UrbanRural_0]|0.9420816595464303|2.281199372588216 |0.21732919721629299|
+|[Sector_0, clean_ChgOffPrinGr_0.0, MIS_Status_1]             |[UrbanRural_0]|0.9420293973472766|2.281072822522506 |0.21672283548474616|
+
+only showing top 20 rows
 
 #### Interesting Rules
 
@@ -282,10 +359,8 @@ clean_ChgOffPrinGr_0.0, clean_GrAppv_35000.0, clean_SBA_Appv_17500.0]
 
 #### Exploring Relationships Between Support, Confidence, and Lift
 
-![support_confidence](./images/association_rules/support_confidence.png)
-![support_lift](./images/association_rules/support_lift.png)
-![confidence_lift](./images/association_rules/confidence_lift.png)
-![support_confidence_shade_lift](./images/association_rules/support_confidence_shade_lift.png)
+![support_confidence](./images/association_rules/support_confidence.png) ![support_lift](./images/association_rules/support_lift.png)
+![confidence_lift](./images/association_rules/confidence_lift.png) ![support_confidence_shade_lift](./images/association_rules/support_confidence_shade_lift.png)
 
 ## Preprocessing and Cleaning 2
 
