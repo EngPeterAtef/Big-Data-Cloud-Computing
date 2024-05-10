@@ -12,7 +12,7 @@ Given the dataset from the U.S. Small Business Administration (SBA) comprising l
 By leveraging historical data on both successful and defaulted loans, the goal is to create a robust decision-making tool that balances the promotion of small business growth with the need to minimize credit risk.
 This model should aid lending institutions in making informed decisions, ultimately contributing to the sustainability of small businesses and the broader economy.
 
-### Dataset
+### Dataset :file_folder:
 
 | N. of features | N. of rows | Dataset size | Link |
 |----------------|------------|--------------|------|
