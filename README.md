@@ -251,15 +251,15 @@ Most loans are lended to the “Retail Trade” sector (NAICS code
 
 1. Append column name at the beginning of each item in the column
 to help differentiate values after creating the itemsets.
-2. Concatenate columns to create itemsets
+2. Concatenate columns to create itemsets  
 Example:  
-[JC, NORTHAMPTON, MA, 1060, FLORENCE, MA, 60, 2, 0, 0, 2, 1, 1, 0, 23, Apr, 0, 135070.0, 1, 0.0,
-35000.0, 17500.0]  
+`[JC, NORTHAMPTON, MA, 1060, FLORENCE, MA, 60, 2, 0, 0, 2, 1, 1, 0, 23, Apr, 0, 135070.0, 1, 0.0,
+35000.0, 17500.0]`  
 becomes  
-[Name_JC, City_NORTHAMPTON, State_MA, Zip_1060, Bank_FLORENCE, BankState_MA, Term_60,
+`[Name_JC, City_NORTHAMPTON, State_MA, Zip_1060, Bank_FLORENCE, BankState_MA, Term_60,
 NoEmp_2, NewExist_0, CreateJob_0, RetainedJob_2, UrbanRural_1, RevLineCr_1, LowDoc_0, Sector_23,
 ApprovalMonth_Apr, IsFranchise_0, clean_DisbursementGross_135070.0, MIS_Status_1,
-clean_ChgOffPrinGr_0.0, clean_GrAppv_35000.0, clean_SBA_Appv_17500.0]
+clean_ChgOffPrinGr_0.0, clean_GrAppv_35000.0, clean_SBA_Appv_17500.0]`
 
 #### Sorting Association Rules
 
@@ -486,3 +486,9 @@ And, ran each Jupyter notebook of the project on it in fully distributed mode.
 #### Worker 0 Metrics
 
 ![hosts](./images/worker0metrics.png)
+
+## Collaborators
+
+| [![bemoierian](https://avatars.githubusercontent.com/u/72103362?v=4)](https://github.com/bemoierian) | [![EngPeterAtef](https://avatars.githubusercontent.com/u/75852529?v=4)](https://github.com/EngPeterAtef) | [![markyasser](https://avatars.githubusercontent.com/u/82395903?v=4)](https://github.com/markyasser) |[![karimmahmoud22](https://avatars.githubusercontent.com/u/82693464?v=4)](https://github.com/karimmahmoud22) |
+|-------------------------------------|--------------------------------------|--------------------------------------|--------------------------------------|
+|@bemoierian                          | @EngPeterAtef                         | @markyasser                           |@karimmahmoud22                       |
