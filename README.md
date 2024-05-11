@@ -1,4 +1,4 @@
-# Big Data :bar_chart: and Cloud Computing :cloud:
+# Big Data :bar_chart: and Cloud Computing :cloud: 
 
 ## i. Brief problem description :clipboard:
 
